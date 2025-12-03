@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: serif, sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "MuYao";
+  src: url("../fonts/沐瑶软笔手写体_compressed.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "FangZheng";
+  src: url("../fonts/方正准圆简体_compressed.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "PingFang";
+  src: url("https://raw.githubusercontent.com/paraself/PingFang-Fonts/refs/heads/master/PingFang%20Light.ttf")
+    format("truetype");
+  font-display: swap;
+}
+h2,
+h3 {
+  font-family: "MuYao", serif, sans-serif;
+}
+.dark-mode {
+  h2,
+  h3 {
+    font-family: "FangZheng", serif, sans-serif;
+  }
+}
