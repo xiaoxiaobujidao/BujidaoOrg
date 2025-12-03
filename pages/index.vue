@@ -1,75 +1,77 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 useSeoMeta({
-  title: '小小布吉岛',
-  description: '百慕大里的小小布吉岛，让您畅享全球互联。',
-  keywords: '布吉岛,百慕大里的小小布吉岛,小小布吉岛,机场,全球互联,VPN,GFW,XMR,Monero,USDT,USDC,Polygon,加速器,网络加速,网络优化,XMR购买VPN,匿名VPN,门罗币购买VPN'
+  title: () => t('index.seo.title'),
+  description: () => t('index.seo.description'),
+  keywords: () => t('index.seo.keywords')
 })
+
 function goUrl(url: string) {
   window.location.href = url;
 }
 </script>
 <template>
   <div class="index">
-    <div class="welcome ">
+    <div class="welcome">
       <div>
-        <h2 class="text-center text-lg">快来小小布吉岛
+        <h2 class="welcome-title">{{ $t('index.welcome.title') }}
           <br />
-          看大大大世界吧～
+          {{ $t('index.welcome.subtitle') }}
         </h2>
-        <div class="flex flex-row flex-wrap justify-center">
-          <div class="flex flex-row flex-wrap justify-center">
-            <div class="p-1.5">
+        <div class="welcome-content">
+          <div class="welcome-inner">
+            <div class="welcome-item">
               <section>
-                <div class="container lg:max-w-md  m-3">
-                  <p>布吉岛采用优质直连加中转的方案，以及最新的Reality、Hy2协议。致力于为用户提供更好的上网体验。</p>
-                  <p>我们的节点遍布全球，为您提供更多的选择，给您更好的全球互联体验。</p>
+                <div class="container">
+                  <p>{{ $t('index.welcome.description1') }}</p>
+                  <p>{{ $t('index.welcome.description2') }}</p>
                 </div>
               </section>
             </div>
           </div>
         </div>
       </div>
-      <div class="flex justify-center align-center m-4">
+      <div class="welcome-button-wrapper">
         <button class="register-button" @click="goUrl('https://app.bujidao.org/login')">
-          立即注册
+          {{ $t('index.welcome.registerButton') }}
         </button>
       </div>
     </div>
-    <h2 class="text-xl text-center">为什么选择我们</h2>
-    <div class="details flex flex-row flex-wrap justify-center">
-      <div class="inline-flex flex-wrap flex-initial justify-center">
-        <div class="p-1.5">
+    <h2 class="section-title">{{ $t('index.whyChooseUs.title') }}</h2>
+    <div class="details">
+      <div class="details-row">
+        <div class="detail-item">
           <section>
-            <h3 class="text-lg text-center">匿名支付</h3>
-            <div class="container lg:max-w-md  m-3">
-              <p>为了大家的隐私，岛岛支持支付宝、微信充值的同时，特引入了虚拟货币的充值方式。
-                包括且不限于Monero(门罗币)、USDT、USDC、TRX ...</p>
+            <h3 class="detail-title">{{ $t('index.whyChooseUs.anonymousPayment.title') }}</h3>
+            <div class="container">
+              <p>{{ $t('index.whyChooseUs.anonymousPayment.description') }}</p>
             </div>
           </section>
         </div>
-        <div class="p-1.5">
+        <div class="detail-item">
           <section>
-            <h3 class="text-lg text-center">隐私守护</h3>
-            <div class="container lg:max-w-md  m-3">
-              <p>自研无日志面板，后台不记录用户访问数据，更安心。</p>
+            <h3 class="detail-title">{{ $t('index.whyChooseUs.privacyProtection.title') }}</h3>
+            <div class="container">
+              <p>{{ $t('index.whyChooseUs.privacyProtection.description') }}</p>
             </div>
           </section>
         </div>
       </div>
-      <div class="inline-flex flex-wrap flex-initial justify-center ">
-        <div class="p-1.5">
+      <div class="details-row">
+        <div class="detail-item">
           <section>
-            <h3 class="text-lg text-center">按量计费</h3>
-            <div class="container lg:max-w-md  m-3">
-              <p>无套餐的束缚，冲多少用多少。按量计费让您冲起来更放心，用起来更省心。</p>
+            <h3 class="detail-title">{{ $t('index.whyChooseUs.payAsYouGo.title') }}</h3>
+            <div class="container">
+              <p>{{ $t('index.whyChooseUs.payAsYouGo.description') }}</p>
             </div>
           </section>
         </div>
-        <div class="p-1.5">
+        <div class="detail-item">
           <section>
-            <h3 class="text-lg text-center">永不失联</h3>
-            <div class="container lg:max-w-md  m-3">
-              <p>注册即可试用至多1000G免费节点流量，即使余额用尽仍然可以保证有节点可以使用。</p>
+            <h3 class="detail-title">{{ $t('index.whyChooseUs.alwaysConnected.title') }}</h3>
+            <div class="container">
+              <p>{{ $t('index.whyChooseUs.alwaysConnected.description') }}</p>
             </div>
           </section>
         </div>
@@ -127,6 +129,72 @@ function goUrl(url: string) {
   }
 }
 
+// Tailwind 替代样式
+.welcome-title {
+  text-align: center;
+  // text-lg 的字体大小会被 .welcome h2 的样式覆盖，所以这里只设置 text-align
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.welcome-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.welcome-item {
+  padding: 0.375rem; // p-1.5 (6px)
+}
+
+.welcome-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem; // m-4 (16px)
+}
+
+.section-title {
+  // text-xl 的字体大小会被 .index h2 的样式覆盖，所以这里只设置 text-align
+  text-align: center;
+}
+
+.details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.details-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex: 0 1 auto; // flex-initial
+  justify-content: center;
+}
+
+.detail-item {
+  padding: 0.375rem; // p-1.5 (6px)
+}
+
+.detail-title {
+  font-size: 1.125rem; // text-lg
+  text-align: center;
+}
+
+.container {
+  margin: 0.75rem; // m-3 (12px)
+  
+  @media (min-width: 1024px) {
+    max-width: 28rem; // lg:max-w-md (448px)
+  }
+}
 
 .index {
   >h2 {
@@ -183,7 +251,7 @@ function goUrl(url: string) {
   background: linear-gradient(0deg, #c179df, #957df5);
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 999px;
   padding: 10px 20px;
   font-size: 20px;
   cursor: pointer;

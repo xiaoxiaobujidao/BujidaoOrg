@@ -4,6 +4,7 @@ import Header from '~/components/shared/Header.vue'
 <template>
     <div class="app">
         <Header />
+        <div class="header-spacer"></div>
         <slot />
     </div>
     <div class="bgc">
@@ -14,6 +15,10 @@ import Header from '~/components/shared/Header.vue'
     <div class="right"></div>
 </template>
 <style lang="scss" scoped>
+.header-spacer {
+    height: 70px;
+}
+
 .dark-mode {
     .bgc {
         background: #222;

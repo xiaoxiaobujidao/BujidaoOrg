@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
+
+const { t } = useI18n();
+
 onMounted(() => {
   window.location.href = 'https://files.bujidao.org/d';
 });
 </script>
 <template>
-  <div class="jump flex justify-center">
-    <div class="content-center ">
+  <div class="jump">
+    <div class="content-center">
       <h2>
-        正在为您跳转...
+        {{ $t('d.redirecting') }}
       </h2>
     </div>
   </div>
@@ -26,10 +29,12 @@ h2 {
 
 .jump {
   position: fixed;
-  top:0;
+  top: 0;
   height: 100vh;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  justify-items: center;
 }
 </style>
