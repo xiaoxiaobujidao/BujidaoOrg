@@ -71,6 +71,7 @@ header {
     .chat-button {
         color: #ccc;
         border: 1px solid #38affff0;
+        background:transparent;
     }
 
 }
