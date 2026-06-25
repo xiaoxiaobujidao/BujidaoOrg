@@ -12,8 +12,7 @@ export const LanguageCode = {
 }
 
 // 默认语言（回退语言）
-// export const DEFAULT_LOCALE = LanguageCode.EN_US
-export const DEFAULT_LOCALE = LanguageCode.ZH_CN
+export const DEFAULT_LOCALE = LanguageCode.EN_US
 
 // 语言列表配置（用于 UI 显示）
 export const languages = [
@@ -28,24 +27,28 @@ export const i18nLocales = [
   {
     code: LanguageCode.ZH_CN,
     iso: 'zh-CN',
+    language: 'zh',
     name: '简体中文',
     file: 'zh-CN.js'
   },
   {
     code: LanguageCode.FA_IR,
     iso: 'fa-IR',
+    language: 'fa',
     name: 'فارسی',
     file: 'fa-IR.js'
   },
   {
     code: LanguageCode.RU_RU,
     iso: 'ru-RU',
+    language: 'ru',
     name: 'Русский',
     file: 'ru-RU.js'
   },
   {
     code: LanguageCode.EN_US,
     iso: 'en-US',
+    language: 'en',
     name: 'English',
     file: 'en-US.js'
   }
@@ -73,7 +76,7 @@ export const i18nConfig = {
     cookieKey: 'i18n_redirected',
     redirectOn: 'root',
     alwaysRedirect: false,
-    fallbackLocale: LanguageCode.EN_US,
+    fallbackLocale: DEFAULT_LOCALE,
   }
 }
 
@@ -167,6 +170,8 @@ export function getTextDirection(localeCode) {
  * 在 Nuxt 插件中调用此函数来设置 HTML lang 和 dir 属性
  * 此函数需要在 Vue 组合式 API 上下文中调用
  */
+export { resolveBrowserLocale, resolveLocaleTag } from './resolveBrowserLocale.js'
+
 export function setupHtmlLang() {
   // 获取当前语言
   const { locale } = useI18n()
