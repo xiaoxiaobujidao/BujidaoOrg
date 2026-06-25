@@ -6,6 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "generate:fonts": "node scripts/generate-fonts.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -19,6 +20,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "fontmin": "1.1.1",
     "sass": "^1.83.0"
   }
 }
