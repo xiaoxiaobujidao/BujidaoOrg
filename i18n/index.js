@@ -11,8 +11,8 @@ export const LanguageCode = {
   EN_US: 'en-US'
 }
 
-// 默认语言（回退语言）
-export const DEFAULT_LOCALE = LanguageCode.EN_US
+// 默认语言：根路径 / 使用中文，同时保留 /zh-CN/ 前缀路由
+export const DEFAULT_LOCALE = LanguageCode.ZH_CN
 
 // 语言列表配置（用于 UI 显示）
 export const languages = [
@@ -22,14 +22,14 @@ export const languages = [
   { code: LanguageCode.EN_US, name: 'English', nativeName: 'English' }
 ]
 
-// Nuxt i18n 模块的 locales 配置
+// Nuxt i18n 模块的 locales 配置（defaultLocale 对应项放在最后）
 export const i18nLocales = [
   {
-    code: LanguageCode.ZH_CN,
-    iso: 'zh-CN',
-    language: 'zh',
-    name: '简体中文',
-    file: 'zh-CN.js'
+    code: LanguageCode.EN_US,
+    iso: 'en-US',
+    language: 'en',
+    name: 'English',
+    file: 'en-US.js'
   },
   {
     code: LanguageCode.FA_IR,
@@ -46,11 +46,11 @@ export const i18nLocales = [
     file: 'ru-RU.js'
   },
   {
-    code: LanguageCode.EN_US,
-    iso: 'en-US',
-    language: 'en',
-    name: 'English',
-    file: 'en-US.js'
+    code: LanguageCode.ZH_CN,
+    iso: 'zh-CN',
+    language: 'zh',
+    name: '简体中文',
+    file: 'zh-CN.js'
   }
 ]
 
@@ -68,15 +68,16 @@ export const i18nConfig = {
   lazy: true,
   langDir: 'locales',
   defaultLocale: DEFAULT_LOCALE,
-  // 使用 prefix 策略，所有语言都会在 URL 中添加语言前缀
-  // 例如: /en-US/, /zh-CN/, /fa-IR/, /ru-RU/
-  strategy: 'prefix_except_default',
+  baseUrl: 'https://bujidao.org',
+  // 每种语言都有前缀路由；默认语言（中文）同时保留无前缀的 / 路由
+  // 例如: / 与 /zh-CN/ 均为中文，/en-US/、/fa-IR/、/ru-RU/ 为其他语言
+  strategy: 'prefix_and_default',
   detectBrowserLanguage: {
     useCookie: true,
     cookieKey: 'i18n_redirected',
     redirectOn: 'root',
     alwaysRedirect: false,
-    fallbackLocale: DEFAULT_LOCALE,
+    fallbackLocale: LanguageCode.EN_US,
   }
 }
 

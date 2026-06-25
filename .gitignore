@@ -25,3 +25,4 @@ logs
 
 # Cloudflare
 .wrangler
+remote_release.sh
